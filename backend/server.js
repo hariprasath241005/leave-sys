@@ -1,4 +1,15 @@
 require("dotenv").config();
+
+// Global error handlers — ensure errors always appear in Render logs
+process.on("unhandledRejection", (reason) => {
+  process.stderr.write("UNHANDLED REJECTION: " + String(reason) + "\n");
+  process.exit(1);
+});
+process.on("uncaughtException", (err) => {
+  process.stderr.write("UNCAUGHT EXCEPTION: " + err.message + "\n");
+  process.exit(1);
+});
+
 const path = require("path");
 const express = require("express");
 const cors = require("cors");
