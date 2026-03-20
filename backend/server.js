@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
@@ -5,6 +6,9 @@ const User = require("./models/User");
 const bcrypt = require("bcryptjs");
 
 const Config = require("./models/Config");
+const Workflow = require("./models/Workflow");
+const Step = require("./models/Step");
+const Rule = require("./models/Rule");
 
 const app = express();
 app.use(cors());
@@ -17,9 +21,13 @@ app.use("/api/workflows", require("./routes/workflowRoutes"));
 app.use("/api", require("./routes/stepRoutes"));
 app.use("/api", require("./routes/ruleRoutes"));
 
-const Workflow = require("./models/Workflow");
-const Step = require("./models/Step");
-const Rule = require("./models/Rule");
+// Serve React build in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+  });
+}
 
 async function seed() {
   const users = [
