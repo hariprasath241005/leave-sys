@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 
 function Notification() {
   const [messages, setMessages] = useState([]);
 
   const loadNotifications = async () => {
-    const res = await fetch("http://localhost:5000/api/execution");
+    const res = await fetch("REPLACE_WITH_RENDER_URL/api/execution");
     const executions = await res.json();
     
     // Flatten notifications from all executions into a list of messages
@@ -35,7 +35,7 @@ function Notification() {
         background: "rgba(15, 23, 42, 0.8)" 
     }}>
       <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px', borderBottom: '1px solid var(--surface-border)', paddingBottom: '0.5rem', marginBottom: '1rem' }}>
-        <span style={{color: 'var(--primary)'}}>🔔</span> Live Comm Link
+        <span style={{color: 'var(--primary)'}}>ðŸ””</span> Live Comm Link
       </h4>
       {messages.length === 0 ? (
         <p style={{fontStyle: 'italic', fontSize: '0.8rem'}}>System standby...</p>

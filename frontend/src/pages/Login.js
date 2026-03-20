@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -6,7 +6,7 @@ function Login() {
 
   const login = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const res = await fetch("REPLACE_WITH_RENDER_URL/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })
@@ -41,7 +41,7 @@ function Login() {
 
         <div style={{ textAlign: 'left', marginBottom: '2rem' }}>
           <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-muted)', fontSize: '0.9rem' }}>Password</label>
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="••••" />
+          <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="â€¢â€¢â€¢â€¢" />
         </div>
 
         <button className="primary" style={{ width: '100%', padding: '0.8rem', fontSize: '1rem' }} onClick={login}>

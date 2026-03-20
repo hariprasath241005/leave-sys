@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import Notification from "./Notification";
 
 function Employee() {
@@ -11,7 +11,7 @@ function Employee() {
     const userId = localStorage.getItem("userId");
     if (userId) {
       try {
-        const res = await fetch(`http://localhost:5000/api/auth/balance/${userId}`);
+        const res = await fetch(`REPLACE_WITH_RENDER_URL/api/auth/balance/${userId}`);
         const data = await res.json();
         if (data.balance !== undefined) {
           setBalance(data.balance);
@@ -29,7 +29,7 @@ function Employee() {
     const userId = localStorage.getItem("userId");
     setMsg("");
     try {
-      const res = await fetch("http://localhost:5000/api/execution/start", {
+      const res = await fetch("REPLACE_WITH_RENDER_URL/api/execution/start", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId, leave_days: Number(days) })
@@ -46,13 +46,13 @@ function Employee() {
       const status = data.status;
       if (status === "completed") {
         setMsgType("success");
-        setMsg(`✅ Leave approved for ${days} day(s)!`);
+        setMsg(`âœ… Leave approved for ${days} day(s)!`);
       } else if (status === "rejected") {
         setMsgType("error");
-        setMsg(`❌ Leave request rejected. Exceeds allowed limit.`);
+        setMsg(`âŒ Leave request rejected. Exceeds allowed limit.`);
       } else {
         setMsgType("success");
-        setMsg(`⏸️ Leave request submitted and awaiting CEO approval.`);
+        setMsg(`â¸ï¸ Leave request submitted and awaiting CEO approval.`);
       }
 
       await fetchBalance();

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 
 function AdminDashboard() {
   const [tab, setTab] = useState("workflows"); 
@@ -11,19 +11,19 @@ function AdminDashboard() {
   const [runResult, setRunResult] = useState(null);
 
   const loadWorkflows = async () => {
-    const res = await fetch("http://localhost:5000/api/workflows");
+    const res = await fetch("REPLACE_WITH_RENDER_URL/api/workflows");
     setWorkflows(await res.json());
   };
 
   const loadExecutions = async () => {
-    const res = await fetch("http://localhost:5000/api/execution");
+    const res = await fetch("REPLACE_WITH_RENDER_URL/api/execution");
     setExecutions(await res.json());
   };
 
   useEffect(() => { loadWorkflows(); }, []);
 
   const openEditor = async (id) => {
-    const res = await fetch(`http://localhost:5000/api/workflows/${id}`);
+    const res = await fetch(`REPLACE_WITH_RENDER_URL/api/workflows/${id}`);
     setActiveWf(await res.json());
     setTab("editor");
   };
@@ -31,7 +31,7 @@ function AdminDashboard() {
   const executeWf = async () => {
     try {
       const data = JSON.parse(runData);
-      const res = await fetch(`http://localhost:5000/api/execution/workflows/${runWf._id}/execute`, {
+      const res = await fetch(`REPLACE_WITH_RENDER_URL/api/execution/workflows/${runWf._id}/execute`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
@@ -47,9 +47,9 @@ function AdminDashboard() {
     <div className="container">
       <div className="glass-panel">
         <div className="header-row">
-          <h1>⚙️ Architecture Dashboard</h1>
+          <h1>âš™ï¸ Architecture Dashboard</h1>
           <button className="danger" onClick={() => { localStorage.clear(); window.location.reload(); }}>
-            <span role="img" aria-label="logout">🚪</span> Logout
+            <span role="img" aria-label="logout">ðŸšª</span> Logout
           </button>
         </div>
         
@@ -62,7 +62,7 @@ function AdminDashboard() {
           </button>
         </div>
 
-        {/* ── WORKFLOWS LIST ── */}
+        {/* â”€â”€ WORKFLOWS LIST â”€â”€ */}
         {tab === "workflows" && (
           <div style={{ animation: 'slideUp 0.4s ease' }}>
             <h2>Available Workflows</h2>
@@ -94,12 +94,12 @@ function AdminDashboard() {
           </div>
         )}
 
-        {/* ── WORKFLOW EDITOR ── */}
+        {/* â”€â”€ WORKFLOW EDITOR â”€â”€ */}
         {tab === "editor" && activeWf && (
           <div style={{ animation: 'slideUp 0.4s ease' }}>
             <div className="header-row">
               <h2>Designing: <span style={{color:"var(--primary)"}}>{activeWf.name}</span></h2>
-              <button onClick={() => setTab("workflows")}>← Back to Library</button>
+              <button onClick={() => setTab("workflows")}>â† Back to Library</button>
             </div>
             
             <h4>Input Architecture</h4>
@@ -131,12 +131,12 @@ function AdminDashboard() {
           </div>
         )}
 
-        {/* ── EXECUTE WORKFLOW ── */}
+        {/* â”€â”€ EXECUTE WORKFLOW â”€â”€ */}
         {tab === "run" && runWf && (
           <div style={{ animation: 'slideUp 0.4s ease' }}>
              <div className="header-row">
               <h2>Deploy Execution: <span style={{color:"var(--primary)"}}>{runWf.name}</span></h2>
-              <button onClick={() => setTab("workflows")}>← Back</button>
+              <button onClick={() => setTab("workflows")}>â† Back</button>
             </div>
 
             <p style={{marginBottom: '0.5rem'}}>Inject Runtime Payload (JSON):</p>
@@ -147,7 +147,7 @@ function AdminDashboard() {
               style={{fontFamily: 'monospace', marginBottom: '1rem'}}
             ></textarea>
 
-            <button className="primary" style={{width:'100%', padding:'1rem', fontSize:'1.1rem'}} onClick={executeWf}>⚡ Initialize Execution Trajectory</button>
+            <button className="primary" style={{width:'100%', padding:'1rem', fontSize:'1.1rem'}} onClick={executeWf}>âš¡ Initialize Execution Trajectory</button>
 
             {runResult && (
               <div className="step-card" style={{marginTop:'2rem', borderColor: runResult.status==='completed'?'var(--success)':'var(--danger)'}}>
@@ -182,7 +182,7 @@ function AdminDashboard() {
           </div>
         )}
 
-        {/* ── AUDIT LOG ── */}
+        {/* â”€â”€ AUDIT LOG â”€â”€ */}
         {tab === "audit" && (
           <div style={{ animation: 'slideUp 0.4s ease' }}>
             <h2>Global Ledger</h2>

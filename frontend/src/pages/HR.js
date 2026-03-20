@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import Notification from "./Notification";
 
 function HR() {
@@ -6,7 +6,7 @@ function HR() {
 
   useEffect(() => {
     const load = async () => {
-      const res = await fetch("http://localhost:5000/api/config");
+      const res = await fetch("REPLACE_WITH_RENDER_URL/api/config");
       const data = await res.json();
       setLimit(data.hrLimit);
     };
@@ -14,7 +14,7 @@ function HR() {
   }, []);
 
   const save = async () => {
-    await fetch("http://localhost:5000/api/config", {
+    await fetch("REPLACE_WITH_RENDER_URL/api/config", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ hrLimit: limit })
