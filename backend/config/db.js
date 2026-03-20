@@ -4,26 +4,33 @@ const connectDB = async () => {
   const uri = process.env.MONGODB_URI;
 
   if (!uri) {
-    console.error("❌ MONGODB_URI is not set!");
+    process.stderr.write("❌ MONGODB_URI is not set!\n");
     process.exit(1);
   }
 
   // Strip accidental angle brackets from Atlas URI copy
   const cleanUri = uri.replace(/<|>/g, "");
+  const isAtlas = cleanUri.includes("mongodb+srv");
 
   console.log("Connecting to MongoDB...");
 
   try {
-    await mongoose.connect(cleanUri, {
-      tls: true,
-      tlsAllowInvalidCertificates: true, // Fix for Atlas TLS compatibility on cloud hosts
-      serverSelectionTimeoutMS: 10000,
-      socketTimeoutMS: 45000,
-      family: 4
-    });
+    const options = isAtlas
+      ? {
+          tls: true,
+          tlsAllowInvalidCertificates: true,
+          serverSelectionTimeoutMS: 10000,
+          socketTimeoutMS: 45000,
+          family: 4
+        }
+      : {
+          serverSelectionTimeoutMS: 5000
+        };
+
+    await mongoose.connect(cleanUri, options);
     console.log("MongoDB Connected");
   } catch (err) {
-    console.error("❌ MongoDB connection FAILED:", err.message);
+    process.stderr.write("❌ MongoDB connection FAILED: " + err.message + "\n");
     process.exit(1);
   }
 };
