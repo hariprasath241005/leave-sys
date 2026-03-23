@@ -3,6 +3,14 @@
 A **Generic, Rule-Based Workflow Engine** built with Node.js, React, and MongoDB. The system allows dynamic approval workflows with configurable limits — designed as a real-world Leave Management System.
 
 ---
+**Database image**
+:<img width="1410" height="664" alt="Image" src="https://github.com/user-attachments/assets/c0de5354-69b5-4b05-aa80-40b634781890" />
+<img width="1369" height="957" alt="Image" src="https://github.com/user-attachments/assets/ce363cdc-2b38-444f-a5ad-4c4ba923634a" />
+<img width="1416" height="773" alt="Image" src="https://github.com/user-attachments/assets/2943d1da-1bc8-42a4-a0f7-3fe5cda34a8f" />
+<img width="1373" height="571" alt="Image" src="https://github.com/user-attachments/assets/6f969e02-57ce-4c8f-837d-2e0d424967d1" />
+<img width="1411" height="944" alt="Image" src="https://github.com/user-attachments/assets/38360c1d-b75e-44d6-baf6-98cc6f55224e" />
+<img width="1378" height="950" alt="Image" src="https://github.com/user-attachments/assets/b04f20f7-7a95-4342-b891-a847ffe2d172" />
+
 
 ## 📁 Project Structure
 
