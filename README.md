@@ -11,7 +11,7 @@ A **Generic, Rule-Based Workflow Engine** built with Node.js, React, and MongoDB
 <img width="1411" height="944" alt="Image" src="https://github.com/user-attachments/assets/38360c1d-b75e-44d6-baf6-98cc6f55224e" />
 <img width="1378" height="950" alt="Image" src="https://github.com/user-attachments/assets/b04f20f7-7a95-4342-b891-a847ffe2d172" />
 
-**Project Vedio link**
+**Project Video link**
 https://drive.google.com/file/d/1B_TPeEZYKx9LcLwQEJW5VTkXLPUcVNde/view?usp=drivesdk
 
 ## 📁 Project Structure
